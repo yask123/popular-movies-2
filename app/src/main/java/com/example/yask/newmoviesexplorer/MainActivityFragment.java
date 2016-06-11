@@ -81,7 +81,7 @@ public class MainActivityFragment extends Fragment {
     public void fetchMoviees(String order) {
         if (order.equals("fav")) {
             adapterMovie.clear();
-           
+
             List<User> users_movies = User.findWithQuery(User.class, "Select * from User");
             for (User each_movie : users_movies) {
                 Movie temp = new Movie();
