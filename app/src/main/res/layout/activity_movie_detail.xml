@@ -1,0 +1,85 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/ll_detail">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+
+        <ImageView
+            android:id="@+id/ivPosterImage"
+            android:layout_width="150dp"
+            android:layout_height="200dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/large_movie_poster" />
+
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/ivPosterImage"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@+id/ivPosterImage"
+            android:text="The Dark Knight"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/ratings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/tvTitle"
+            android:layout_below="@+id/tvTitle"
+            android:layout_marginEnd="27dp"
+            android:layout_marginTop="10dp"
+            android:text="Critics Score: 93%"
+            android:textSize="14sp" />
+
+
+        <TextView
+            android:id="@+id/overview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ivPosterImage"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:text="Overview" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Favourite"
+            android:id="@+id/fav"
+            android:layout_marginTop="22dp"
+            android:layout_below="@+id/ratings"
+            android:layout_alignEnd="@+id/ratings" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Test"
+            android:layout_below="@+id/fav"
+            android:layout_alignEnd="@+id/fav"
+            android:layout_marginTop="11dp"
+            android:id="@+id/test" />
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>
+
+</ScrollView>
