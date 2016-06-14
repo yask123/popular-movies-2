@@ -32,8 +32,8 @@ public class IMDB_Client {
         paramMap.put("api_key", KEY);
         RequestParams params = new RequestParams(paramMap);
 
-        Log.e("test",url);
-        client.get("http://api.themoviedb.org/3/discover/movie/?api_key=" + KEY, handler);
+        Log.e("test, url", "http://api.themoviedb.org/3/discover/movie/?api_key=" + KEY + "&sort_by=" + selected_option + ".desc");
+        client.get("http://api.themoviedb.org/3/movie/" + selected_option + "?api_key=" + KEY, handler);
     }
 
 

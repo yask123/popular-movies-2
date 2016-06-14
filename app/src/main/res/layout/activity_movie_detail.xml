@@ -27,29 +27,6 @@
 
 
         <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/ivPosterImage"
-            android:layout_marginLeft="8dp"
-            android:layout_toRightOf="@+id/ivPosterImage"
-            android:text="The Dark Knight"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/ratings"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/tvTitle"
-            android:layout_below="@+id/tvTitle"
-            android:layout_marginEnd="27dp"
-            android:layout_marginTop="10dp"
-            android:text="Critics Score: 93%"
-            android:textSize="14sp" />
-
-
-        <TextView
             android:id="@+id/overview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -62,11 +39,32 @@
             android:id="@+id/fav"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/ratings"
-            android:layout_alignRight="@id/ivPosterImage"
+            android:layout_alignStart="@+id/ratings"
             android:layout_below="@+id/ratings"
-            android:layout_marginTop="29dp"
+            android:layout_marginTop="30dp"
             android:text="Favourite" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="36dp"
+            android:layout_toEndOf="@+id/ivPosterImage"
+            android:text="The Dark Knight"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/ratings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvTitle"
+            android:layout_marginTop="11dp"
+            android:layout_toEndOf="@+id/overview"
+            android:text="Critics Score: 93%"
+            android:textSize="14sp" />
 
 
     </RelativeLayout>
