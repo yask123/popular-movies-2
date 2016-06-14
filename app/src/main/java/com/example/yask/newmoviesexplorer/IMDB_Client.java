@@ -6,6 +6,8 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
+import java.util.HashMap;
+
 /**
  * Created by yask on 03/06/16.
  */
@@ -23,12 +25,17 @@ public class IMDB_Client {
         return BASE_URL+relative_url;
     }
 
-    public void getMovies(JsonHttpResponseHandler handler){
+    public void getMovies(String selected_option, JsonHttpResponseHandler handler) {
         String url = getURL("/");
-        RequestParams params = new RequestParams("api_key",KEY);
+        HashMap<String, String> paramMap = new HashMap<String, String>();
+        paramMap.put("sort_by", selected_option);
+        paramMap.put("api_key", KEY);
+        RequestParams params = new RequestParams(paramMap);
+
         Log.e("test",url);
-        client.get("http://api.themoviedb.org/3/discover/movie/",params,handler);
+        client.get("http://api.themoviedb.org/3/discover/movie/?api_key=" + KEY, handler);
     }
+
 
     public void getTrailer(String ID, JsonHttpResponseHandler handler){
         RequestParams params = new RequestParams("api_key",KEY);

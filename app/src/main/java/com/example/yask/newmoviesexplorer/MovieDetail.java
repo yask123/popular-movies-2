@@ -1,6 +1,8 @@
 package com.example.yask.newmoviesexplorer;
 
+import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -75,8 +77,15 @@ public class MovieDetail extends AppCompatActivity {
                     //video.setText(item.getString("key"));
                     for(int i=0;i < jsonarray.length();i++){
                         JSONObject item = jsonarray.getJSONObject(i);
-                        Button new_trailer = new Button(getApplicationContext());
-                        new_trailer.setText(item.getString("key"));
+                        final Button new_trailer = new Button(getApplicationContext());
+                        final String vid_id = item.getString("key");
+                        new_trailer.setText("Trailer " + i + 1);
+                        new_trailer.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/watch?v=" + vid_id)));
+                            }
+                        });
                         ll_detail.addView(new_trailer);
                     }
                     fetchReviws();

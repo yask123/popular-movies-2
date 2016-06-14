@@ -7,6 +7,9 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -33,18 +36,37 @@ public class MainActivityFragment extends Fragment {
     View rootView;
     IMDB_Client client;
 
+
     public MainActivityFragment() {
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_main, menu);
+
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.action_settings:
+                startActivity(new Intent(getActivity(), SettingsActivity.class));
+
+        }
+        return true;
     }
 
     @Override
     public void onStart() {
         super.onStart();
 
+        setupMovieSelectedListener();
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
         String order = prefs.getString("sort_order", "");
-        Log.e("Selected settings = ", order);
-        setupMovieSelectedListener();
-
+        Log.v("Selected settings = ", order);
         fetchMoviees(order);
     }
 
@@ -52,11 +74,13 @@ public class MainActivityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_main, container, false);
+        setHasOptionsMenu(true);
 
         lvMovies = (GridView) rootView.findViewById(R.id.lvmovie);
         ArrayList<Movie> aMovies = new ArrayList<Movie>();
         adapterMovie = new MovieAdapter(getActivity(), aMovies);
         lvMovies.setAdapter(adapterMovie);
+
 
 
         return rootView;
@@ -66,7 +90,6 @@ public class MainActivityFragment extends Fragment {
         lvMovies.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-
 
                 Intent i = new Intent(getActivity(), MovieDetail.class);
                 i.putExtra(MOVIE_DETAIL_KEY, adapterMovie.getItem(position));
@@ -79,9 +102,11 @@ public class MainActivityFragment extends Fragment {
     }
 
     public void fetchMoviees(String order) {
+        adapterMovie.clear();
+        adapterMovie.notifyDataSetChanged();
         if (order.equals("fav")) {
             adapterMovie.clear();
-
+            adapterMovie.notifyDataSetChanged();
             List<User> users_movies = User.findWithQuery(User.class, "Select * from User");
             for (User each_movie : users_movies) {
                 Movie temp = new Movie();
@@ -96,8 +121,9 @@ public class MainActivityFragment extends Fragment {
             adapterMovie.notifyDataSetChanged();
         } else {
             adapterMovie.clear();
+            adapterMovie.notifyDataSetChanged();
             client = new IMDB_Client();
-            client.getMovies(new JsonHttpResponseHandler() {
+            client.getMovies(order, new JsonHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONObject responseBody) {
                     JSONArray items = null;

@@ -4,10 +4,10 @@
     android:fillViewport="true">
 
 <LinearLayout
+    android:id="@+id/ll_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:id="@+id/ll_detail">
+    android:orientation="vertical">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -59,22 +59,14 @@
             android:text="Overview" />
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Favourite"
             android:id="@+id/fav"
-            android:layout_marginTop="22dp"
-            android:layout_below="@+id/ratings"
-            android:layout_alignEnd="@+id/ratings" />
-
-        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Test"
-            android:layout_below="@+id/fav"
-            android:layout_alignEnd="@+id/fav"
-            android:layout_marginTop="11dp"
-            android:id="@+id/test" />
+            android:layout_alignEnd="@+id/ratings"
+            android:layout_alignRight="@id/ivPosterImage"
+            android:layout_below="@+id/ratings"
+            android:layout_marginTop="29dp"
+            android:text="Favourite" />
 
 
     </RelativeLayout>
