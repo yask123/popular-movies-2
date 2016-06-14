@@ -154,6 +154,7 @@ public class MovieDetail extends AppCompatActivity {
                 }
                 else {
                     Log.e("DB","Movie already selected");
+                    fav.setText("Starred");
                 }
             }
         });
