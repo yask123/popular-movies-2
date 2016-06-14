@@ -7,10 +7,13 @@
     android:id="@+id/ll_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:weightSum="1">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="0.03"
         android:padding="5dp">
 
 
@@ -35,36 +38,35 @@
             android:layout_marginTop="30dp"
             android:text="Overview" />
 
-        <Button
-            android:id="@+id/fav"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/ratings"
-            android:layout_below="@+id/ratings"
-            android:layout_marginTop="30dp"
-            android:text="Favourite" />
-
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="36dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:layout_toEndOf="@+id/ivPosterImage"
             android:text="The Dark Knight"
             android:textSize="24sp"
             android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/fav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:layout_toEndOf="@id/ivPosterImage"
+            android:text="Favourite" />
 
         <TextView
             android:id="@+id/ratings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvTitle"
-            android:layout_marginTop="11dp"
-            android:layout_toEndOf="@+id/overview"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/ivPosterImage"
             android:text="Critics Score: 93%"
-            android:textSize="14sp" />
+            android:textSize="18sp" />
 
 
     </RelativeLayout>
